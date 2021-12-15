@@ -1,1 +1,0 @@
-# test-aristek-systems
