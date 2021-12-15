@@ -1,0 +1,42 @@
+@import '../../sassStyles/variables';
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 2.1fr 1fr;
+  justify-content: space-between;
+  grid-template-rows: minmax(72px, auto) auto;
+  row-gap: 16px;
+  column-gap: 3%;
+  padding: 24px;
+}
+
+.main__todo-form {
+  grid-column-start: 1;
+}
+
+.main__todos {
+  grid-column-start: 1;
+}
+
+.main__completed {
+  grid-row: 1 / span 2;
+  grid-column: 2 / 3;
+}
+
+@media screen and (max-width: $screen-md) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .main__completed {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+}
+
+@media screen and (max-width: $screen-xs) {
+  .main {
+    padding: 10px;
+  }
+}

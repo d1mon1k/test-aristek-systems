@@ -1,0 +1,21 @@
+.item-todo-enter {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.item-todo-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 300ms ease-in;
+}
+
+.item-todo-exit {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.item-todo-exit-active {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 300ms ease-in;
+}

@@ -1,0 +1,13 @@
+@import '../../sassStyles/variables';
+
+.todo-form {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 10px 0;
+}
+
+@media screen and (max-width: $screen-xs) {
+  .todo-form {
+    flex-direction: column;
+  }
+}

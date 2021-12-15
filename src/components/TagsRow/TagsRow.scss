@@ -1,0 +1,25 @@
+.tags-row {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+
+  span {
+    padding: 4px 3px;
+    border-radius: 4px;
+  }
+
+  &__total {
+    color: #550dc9;
+    background-color: #fef6ff;
+  }
+
+  &__todo {
+    color: #0d9cc9;
+    background-color: #f6fcff;
+  }
+
+  &__completed {
+    color: #0dc958;
+    background-color: #f6fff9;
+  }
+}

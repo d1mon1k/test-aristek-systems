@@ -1,0 +1,19 @@
+@import '../../sassStyles/variables';
+
+.sidebar {
+  grid-area: sidebar;
+  padding: 27px 0;
+  background-color: $primary1Color;
+}
+
+.nav__link {
+  display: block;
+  padding: 6px 0;
+  font-size: 0;
+  line-height: 0;
+  text-align: center;
+}
+
+.nav__item.active {
+  background-color: $primary2Color;
+}
