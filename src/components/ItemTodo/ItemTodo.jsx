@@ -1,5 +1,5 @@
 import React from 'react'
-import './ItemTodo.scss'
+import cl from './ItemTodo.module.scss'
 import editIcon from './../../assets/images/svg/edit-ico.svg'
 import copyIcon from './../../assets/images/svg/copy-ico.svg'
 import deleteIcon from './../../assets/images/svg/delete-ico.svg'
@@ -17,14 +17,16 @@ const ItemTodo = ({ onEdit, onRemove, onCheckboxChange, todoItem, title }) => {
     </>
   )
 
-  const itemTitleClass = `item-todo__text ${
-    todoItem.completed ? 'item-todo__text_checked' : null
-  }`
+  let itemTitleCl = [cl.text, todoItem.completed ? cl.text_checked : null]
 
   return (
-    <li className="item-todo">
-      <input onChange={onCheckboxChange} checked={todoItem.completed} type="checkbox"/>
-      <span className={itemTitleClass}>{title}</span>
+    <li className={cl.itemTodo}>
+      <input
+        onChange={onCheckboxChange}
+        checked={todoItem.completed}
+        type="checkbox"
+      />
+      <span className={itemTitleCl.join(' ')}>{title}</span>
       {additionalBtns}
       <AdditionalButton onClick={onRemove} src={deleteIcon} alt="delete" />
     </li>

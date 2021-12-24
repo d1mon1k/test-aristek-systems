@@ -1,11 +1,11 @@
 import React from 'react'
-import './PrimaryButton.scss'
+import cl from './PrimaryButton.module.scss'
 
 const PrimaryButton = ({ clickHandler, ...props }) => {
   return (
     <button
       {...props}
-      className="primary-btn"
+      className={cl.primaryBtn}
       onClick={(e) => {
         clickHandler(e)
       }}

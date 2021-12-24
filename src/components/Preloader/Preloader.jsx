@@ -1,9 +1,9 @@
 import React from 'react'
 import preloader from '../../assets/images/svg/preloader.svg'
-import './Preloader.scss'
+import cl from './Preloader.module.scss'
 
 const Preloader = () => {
-  return <img className="preloader" src={preloader} alt="preloader" />
+  return <img className={cl.preloader} src={preloader} alt="preloader" />
 }
 
 export default Preloader

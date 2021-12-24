@@ -1,12 +1,12 @@
 import React from 'react'
-import './InputTodo.scss'
+import cl from './InputTodo.module.scss'
 
 const InputTodo = ({ onInputChange, textArea, ...props }) => {
-   return (
+  return (
     <input
       {...props}
       value={textArea}
-      className="input-todo"
+      className={cl.inputTodo}
       onChange={(e) => onInputChange(e)}
     />
   )

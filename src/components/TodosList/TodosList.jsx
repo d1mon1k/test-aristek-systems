@@ -1,11 +1,11 @@
 import React from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import ItemTodo from '../ItemTodo/ItemTodo'
-import './TodosList.scss'
+import cl from './TodosList.module.scss'
 
 const TodosList = ({ partTasks, onEdit, onRemove, onCheckboxChange }) => {
   return (
-    <ul className="todos-list">
+    <ul className={cl.todosList}>
       <TransitionGroup component={null}>
         {partTasks.map((todoItem) => {
           return (

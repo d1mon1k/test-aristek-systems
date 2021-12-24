@@ -1,6 +1,6 @@
 @import '../../sassStyles/variables';
 
-.item-todo {
+.itemTodo {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -16,13 +16,13 @@
   input {
     cursor: pointer;
   }
+}
 
-  &__text {
-    width: 100%;
+.text {
+  width: 100%;
 
-    &_checked {
-      text-decoration: line-through;
-      color: $textLightColor;
-    }
+  &_checked {
+    text-decoration: line-through;
+    color: $textLightColor;
   }
 }

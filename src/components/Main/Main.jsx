@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Main.scss'
+import cl from './Main.module.scss'
 import TagsRow from '../../components/TagsRow/TagsRow'
 import TodoForm from '../../components/TodoForm/TodoForm'
 import TodosList from '../../components/TodosList/TodosList'
@@ -101,8 +101,8 @@ const Main = () => {
     return <Preloader />
   }
   return (
-    <main className="main">
-      <div className="main__todo-form">
+    <main className={cl.main}>
+      <div className={cl.todoForm}>
         <TodoForm
           onAdd={addHandler}
           onSave={saveHandler}
@@ -112,7 +112,7 @@ const Main = () => {
         />
         <TagsRow todosCounter={todosCounter} />
       </div>
-      <div className="main__todos">
+      <div className={cl.todos}>
         <h2>To do ({todosCounter.toDo})</h2>
         <TodosList
           onEdit={editHandler}
@@ -121,7 +121,7 @@ const Main = () => {
           partTasks={tasks.todo}
         />
       </div>
-      <div className="main__completed">
+      <div className={cl.completed}>
         <h2>Completed ({todosCounter.completed})</h2>
         <TodosList
           onRemove={removeHandler}

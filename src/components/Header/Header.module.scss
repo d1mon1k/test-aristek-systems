@@ -6,16 +6,16 @@
   padding: 15px 24px 15px 16px;
 }
 
-.header__logo {
+.logo {
   font-size: 0;
   line-height: 0;
 }
 
-.header__title {
+.title {
   flex-grow: 1;
 }
 
-.user-info {
+.userInfo {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -27,5 +27,3 @@
   }
 }
 
-.user-info__photo {
-}

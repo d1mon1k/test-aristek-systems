@@ -1,11 +1,11 @@
 import React from 'react'
-import './TodoForm.scss'
+import cl from './TodoForm.module.scss'
 import InputTodo from '../ui/InputTodo/InputTodo'
 import PrimaryButton from '../ui/PrimaryButton/PrimaryButton'
 
 const TodoForm = ({ onInputChange, onSave, onAdd, editableTask, textArea }) => {
   return (
-    <form className="todo-form">
+    <form className={cl.todoForm}>
       <InputTodo
         onInputChange={onInputChange}
         textArea={textArea}
