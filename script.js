@@ -11,19 +11,17 @@ const groupBy = (arr, key) => {
     throw new TypeError('Expected two arguments')
   }
 
-  const updatedData = {}
-
-  for (let obj of arr) {
+  return arr.reduce((result, obj) => {
     if (!obj[`${key}`]) {
       return {}
     }
     const value = obj[`${key}`]
-    if (!updatedData[value]) {
-      updatedData[value] = []
+    if (!result[value]) {
+      result[value] = []
     }
-    updatedData[value].push(obj)
-  }
-  return updatedData
+    result[value].push(obj)
+    return result
+  }, {})
 }
 
 console.log(groupBy(input, 'universe'))
