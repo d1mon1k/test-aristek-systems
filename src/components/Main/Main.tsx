@@ -7,7 +7,11 @@ import apiService from '../../API/apiService'
 import Preloader from '../Preloader/Preloader'
 import { groupByCompleted, improveString } from '../../helpers/helpers'
 
-const Main = () => {
+interface {
+  
+}
+
+const Main: React.FC = () => {
   const [tasks, setTasks] = useState({ todo: [], completed: [] })
   const [textArea, setTextArea] = useState('')
   const [editableTask, setEditableTask] = useState(null)
@@ -29,7 +33,7 @@ const Main = () => {
     total: tasks.completed.length + tasks.todo.length,
   }
 
-  const addHandler = (e) => {
+  const addHandler = (e: React.FormEvent) => {
     e.preventDefault()
     const title = improveString(textArea)
     if (!title) {

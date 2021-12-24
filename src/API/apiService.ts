@@ -1,3 +1,4 @@
+import { NewTodo } from './../interfaces';
 import axios from 'axios'
 
 export default class apiService {
@@ -12,7 +13,7 @@ export default class apiService {
     }
   }
 
-  static async postTask(newTask) {
+  static async postTask(newTask: NewTodo) {
     try {
       await axios.post('https://jsonplaceholder.typicode.com/todos', newTask)
     } catch (err) {
@@ -20,7 +21,7 @@ export default class apiService {
     }
   }
 
-  static async editTask(id, editedTask) {
+  static async editTask(id: string, editedTask: NewTodo) {
     try {
       await axios.put(
         `https://jsonplaceholder.typicode.com/todos/${id}`,
@@ -31,7 +32,7 @@ export default class apiService {
     }
   }
 
-  static async deleteTask(id) {
+  static async deleteTask(id: string) {
     try {
       await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
     } catch (err) {
