@@ -6,15 +6,17 @@ import TodosList from '../TodosList/TodosList'
 import apiService from '../../API/apiService'
 import Preloader from '../Preloader/Preloader'
 import { groupByCompleted, improveString } from '../../helpers/helpers'
+import { NewTodo } from '../../interfaces'
 
-interface {
-  
+interface Tasks {
+  todo: Array<NewTodo>
+  completed: Array<NewTodo>
 }
 
 const Main: React.FC = () => {
-  const [tasks, setTasks] = useState({ todo: [], completed: [] })
+  const [tasks, setTasks] = useState<Tasks>({ todo: [], completed: [] })
   const [textArea, setTextArea] = useState('')
-  const [editableTask, setEditableTask] = useState(null)
+  const [editableTask, setEditableTask] = useState<NewTodo | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -50,23 +52,23 @@ const Main: React.FC = () => {
     setTextArea('')
   }
 
-  const saveHandler = (e) => {
+  const saveHandler = (e: React.FormEvent) => {
     e.preventDefault()
     const title = improveString(textArea)
     if (!title) {
       return
     }
-    apiService.editTask(editableTask.id, { ...editableTask, title })
+    apiService.editTask(editableTask!.id, { ...editableTask, title })
     setTextArea('')
     setEditableTask(null)
   }
 
-  const editHandler = (todoItem) => {
+  const editHandler = (todoItem: NewTodo): void => {
     setTextArea(todoItem.title)
     setEditableTask(todoItem)
   }
 
-  const removeHandler = (todoItem) => {
+  const removeHandler = (todoItem: NewTodo): void => {
     let todosArr = [...tasks.todo, ...tasks.completed]
     todosArr = todosArr.filter((task) => task.id !== todoItem.id)
     const newTasksList = groupByCompleted(todosArr)
@@ -74,7 +76,7 @@ const Main: React.FC = () => {
     setTasks(newTasksList)
   }
 
-  const checkboxChangeHandler = (todoItem) => {
+  const checkboxChangeHandler = (todoItem: NewTodo): void => {
     let todosArr = [...tasks.todo, ...tasks.completed]
     todosArr = todosArr.filter((task) => task.id !== todoItem.id)
     const todoItemCopy = { ...todoItem, completed: !todoItem.completed }
@@ -84,17 +86,19 @@ const Main: React.FC = () => {
     setTasks(newTasksList)
   }
 
-  const taskChangeHandler = (newTitle) => {
+  const taskChangeHandler = (newTitle: string): void => {
     const tasksCopy = { ...tasks }
     tasksCopy.todo.forEach((task) => {
-      if (editableTask.id === task.id) {
+      if (editableTask!.id === task.id) {
         task.title = improveString(newTitle)
       }
     })
     setTasks(tasksCopy)
   }
 
-  const inputChangeHandler = ({ target }) => {
+  const inputChangeHandler = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>): void => {
     setTextArea(target.value)
     if (editableTask) {
       taskChangeHandler(target.value)

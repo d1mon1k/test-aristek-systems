@@ -4,8 +4,17 @@ import editIcon from './../../assets/images/svg/edit-ico.svg'
 import copyIcon from './../../assets/images/svg/copy-ico.svg'
 import deleteIcon from './../../assets/images/svg/delete-ico.svg'
 import AdditionalButton from '../ui/AdditionalButton/AdditionalButton'
+import { NewTodo } from '../../interfaces'
 
-const ItemTodo = ({ onEdit, onRemove, onCheckboxChange, todoItem, title }) => {
+interface ItemTodo {
+  onEdit?: (todoItem: NewTodo) => void
+  onRemove: (todoItem: NewTodo) => void
+  onCheckboxChange: (todoItem: NewTodo) => void
+  todoItem: NewTodo
+  title: string 
+}
+
+const ItemTodo: React.FC<ItemTodo> = ({ onEdit, onRemove, onCheckboxChange, todoItem, title }) => {
   const copyHandler = () => {
     navigator.clipboard.writeText(todoItem.title)
   }
@@ -22,7 +31,7 @@ const ItemTodo = ({ onEdit, onRemove, onCheckboxChange, todoItem, title }) => {
   return (
     <li className={cl.itemTodo}>
       <input
-        onChange={onCheckboxChange}
+        onChange={() => onCheckboxChange(todoItem)}
         checked={todoItem.completed}
         type="checkbox"
       />
