@@ -7,7 +7,7 @@ import cl from './TodosList.module.scss'
 interface TodosList {
   partTasks: Array<NewTodo>
   onEdit?: (todoItem: NewTodo) => void
-  onRemove: (e: React.MouseEvent, todoItem: NewTodo) => void
+  onRemove: ( todoItem: NewTodo) => void
   onCheckboxChange: (todoItem: NewTodo) => void
 }
 

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cl from './Main.module.scss'
 import TagsRow from '../TagsRow/TagsRow'
 import TodoForm from '../TodoForm/TodoForm'
@@ -68,12 +68,12 @@ const Main: React.FC = () => {
     setEditableTask(todoItem)
   }
 
-  const removeHandler = (e: React.MouseEvent, todoItem: NewTodo): void => {
+  const removeHandler = ( todoItem: NewTodo): void => {
     let todosArr = [...tasks.todo, ...tasks.completed]
     todosArr = todosArr.filter((task) => task.id !== todoItem.id)
     const newTasksList = groupByCompleted(todosArr)
     apiService.deleteTask(todoItem.id)
-    setTasks(newTasksList)
+    setTasks(newTasksList) 
   }
 
   const checkboxChangeHandler = (todoItem: NewTodo): void => {
@@ -96,9 +96,7 @@ const Main: React.FC = () => {
     setTasks(tasksCopy)
   }
 
-  const inputChangeHandler = ({
-    target,
-  }: React.ChangeEvent<HTMLInputElement>): void => {
+  const inputChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
     setTextArea(target.value)
     if (editableTask) {
       taskChangeHandler(target.value)

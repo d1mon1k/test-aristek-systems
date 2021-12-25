@@ -1,16 +1,16 @@
-import React, { MouseEventHandler } from 'react'
-import ItemTodo, { OnBtnClick } from '../../ItemTodo/ItemTodo'
+import React from 'react'
+import { OnBtnClick } from '../../ItemTodo/ItemTodo'
 import cl from './AdditionalButton.module.scss'
 
 interface AdditionalBtn {
-  onClick: (e: React.MouseEvent, todoItem: ItemTodo) => void
+  onClickHandler?: OnBtnClick
   alt: string
   src: string
 }
 
-const AdditionalButton: React.FC<AdditionalBtn> = ({ onClick, alt, ...props }) => {
+const AdditionalButton: React.FC<AdditionalBtn> = ({ onClickHandler, alt, ...props }) => {
   return (
-    <button onClick={onClick} className={cl.additionalBtn}>
+    <button onClick={onClickHandler} className={cl.additionalBtn}>
       <img {...props} alt={alt} />
     </button>
   )

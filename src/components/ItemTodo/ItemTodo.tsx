@@ -13,9 +13,11 @@ interface ItemTodo {
   todoItem: NewTodo
   title: string 
 }
-type EditFunction = (todoItem: NewTodo) => void 
+
+export type EditFunction = (todoItem: NewTodo) => void
 type RemoveFunction = (e: React.MouseEvent, todoItem: NewTodo) => void
 type CheckboxChangeFunction = (todoItem: NewTodo) => void
+
 export type OnBtnClick = EditFunction | RemoveFunction | CheckboxChangeFunction
 
 const ItemTodo: React.FC<ItemTodo> = ({ onEdit, onRemove, onCheckboxChange, todoItem, title }) => {
@@ -25,8 +27,8 @@ const ItemTodo: React.FC<ItemTodo> = ({ onEdit, onRemove, onCheckboxChange, todo
 
   const additionalBtns = todoItem.completed ? null : (
     <>
-      <AdditionalButton onClick={onEdit} src={editIcon} alt="edit" />
-      <AdditionalButton onClick={copyHandler} src={copyIcon} alt="copy" />
+      <AdditionalButton onClickHandler={onEdit} src={editIcon} alt="edit" />
+      <AdditionalButton onClickHandler={copyHandler} src={copyIcon} alt="copy" />
     </>
   )
 
@@ -41,7 +43,7 @@ const ItemTodo: React.FC<ItemTodo> = ({ onEdit, onRemove, onCheckboxChange, todo
       />
       <span className={itemTitleCl.join(' ')}>{title}</span>
       {additionalBtns}
-      <AdditionalButton onClick={onRemove} src={deleteIcon} alt="delete" />
+      <AdditionalButton onClickHandler={onRemove} src={deleteIcon} alt="delete" />
     </li>
   )
 }

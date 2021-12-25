@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import cl from './TagsRow.module.scss'
 import Counter from './Counter'
 import { TodosCounter } from '../../interfaces'
