@@ -21,7 +21,7 @@ export default class apiService {
     }
   }
 
-  static async editTask(id: string, editedTask: NewTodo) {
+  static async editTask(id: number, editedTask: NewTodo) {
     try {
       await axios.put(
         `https://jsonplaceholder.typicode.com/todos/${id}`,
@@ -32,7 +32,7 @@ export default class apiService {
     }
   }
 
-  static async deleteTask(id: string) {
+  static async deleteTask(id: number) {
     try {
       await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
     } catch (err) {

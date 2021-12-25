@@ -2,8 +2,17 @@ import React from 'react'
 import cl from './TodoForm.module.scss'
 import InputTodo from '../ui/InputTodo/InputTodo'
 import PrimaryButton from '../ui/PrimaryButton/PrimaryButton'
+import { NewTodo } from '../../interfaces'
 
-const TodoForm = ({ onInputChange, onSave, onAdd, editableTask, textArea }) => {
+interface TodoForm {
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onSave: (e: React.FormEvent) => void
+  onAdd: (e: React.FormEvent) => void
+  editableTask: NewTodo | null
+  textArea: string
+}
+
+const TodoForm: React.FC<TodoForm> = ({ onInputChange, onSave, onAdd, editableTask, textArea }) => {
   return (
     <form className={cl.todoForm}>
       <InputTodo

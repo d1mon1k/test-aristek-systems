@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-const Counter = (props) => {
+interface Counter {
+    className: string
+}
+
+const Counter: React.FC<Counter> = (props) => {
   return <span {...props}>{props.children}</span>
 }
 

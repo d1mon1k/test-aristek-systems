@@ -1,5 +1,8 @@
-export const groupByCompleted = (todos) => {
-  const updatedTasksList = { todo: [], completed: [] }
+import { Tasks } from './../components/Main/Main';
+import { NewTodo } from '../interfaces'
+
+export const groupByCompleted = (todos: Array<NewTodo>) => {
+  const updatedTasksList: Tasks = { todo: [], completed: [] }
   todos.forEach((todo) => {
     !todo.completed
       ? updatedTasksList.todo.push(todo)
@@ -8,6 +11,6 @@ export const groupByCompleted = (todos) => {
   return updatedTasksList
 }
 
-export const improveString = (line) => {
+export const improveString = (line: string): string => {
   return line.trim().replace(/\s{2,}/g, ' ')
 }

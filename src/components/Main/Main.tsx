@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { MouseEventHandler, useEffect, useState } from 'react'
 import cl from './Main.module.scss'
 import TagsRow from '../TagsRow/TagsRow'
 import TodoForm from '../TodoForm/TodoForm'
@@ -8,14 +8,14 @@ import Preloader from '../Preloader/Preloader'
 import { groupByCompleted, improveString } from '../../helpers/helpers'
 import { NewTodo } from '../../interfaces'
 
-interface Tasks {
+export interface Tasks {
   todo: Array<NewTodo>
   completed: Array<NewTodo>
 }
 
 const Main: React.FC = () => {
   const [tasks, setTasks] = useState<Tasks>({ todo: [], completed: [] })
-  const [textArea, setTextArea] = useState('')
+  const [textArea, setTextArea] = useState<string>('')
   const [editableTask, setEditableTask] = useState<NewTodo | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -58,7 +58,7 @@ const Main: React.FC = () => {
     if (!title) {
       return
     }
-    apiService.editTask(editableTask!.id, { ...editableTask, title })
+    apiService.editTask(editableTask!.id, { ...editableTask!, title })
     setTextArea('')
     setEditableTask(null)
   }
@@ -68,7 +68,7 @@ const Main: React.FC = () => {
     setEditableTask(todoItem)
   }
 
-  const removeHandler = (todoItem: NewTodo): void => {
+  const removeHandler = (e: React.MouseEvent, todoItem: NewTodo): void => {
     let todosArr = [...tasks.todo, ...tasks.completed]
     todosArr = todosArr.filter((task) => task.id !== todoItem.id)
     const newTasksList = groupByCompleted(todosArr)

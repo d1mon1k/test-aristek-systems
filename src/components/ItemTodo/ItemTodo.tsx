@@ -7,12 +7,16 @@ import AdditionalButton from '../ui/AdditionalButton/AdditionalButton'
 import { NewTodo } from '../../interfaces'
 
 interface ItemTodo {
-  onEdit?: (todoItem: NewTodo) => void
-  onRemove: (todoItem: NewTodo) => void
-  onCheckboxChange: (todoItem: NewTodo) => void
+  onEdit?: EditFunction
+  onRemove: RemoveFunction
+  onCheckboxChange: CheckboxChangeFunction
   todoItem: NewTodo
   title: string 
 }
+type EditFunction = (todoItem: NewTodo) => void 
+type RemoveFunction = (e: React.MouseEvent, todoItem: NewTodo) => void
+type CheckboxChangeFunction = (todoItem: NewTodo) => void
+export type OnBtnClick = EditFunction | RemoveFunction | CheckboxChangeFunction
 
 const ItemTodo: React.FC<ItemTodo> = ({ onEdit, onRemove, onCheckboxChange, todoItem, title }) => {
   const copyHandler = () => {
