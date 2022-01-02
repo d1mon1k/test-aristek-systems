@@ -1,14 +1,12 @@
 import React from 'react'
-import cl from './PrimaryButton.module.scss'
+import { onAdd, onSave } from '../../../types/types'
+import cl from './styles.module.scss'
 
-  type onSave= (e: React.FormEvent) => void
-  type onAdd= (e: React.FormEvent) => void
-interface PrimaryButton {
+interface Props {
   clickHandler: onSave | onAdd
-
 }
 
-const PrimaryButton:React.FC<PrimaryButton> = ({ clickHandler, ...props }) => {
+const PrimaryButton:React.FC<Props> = ({ clickHandler, ...props }) => {
   return (
     <button
       {...props}

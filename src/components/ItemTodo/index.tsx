@@ -1,12 +1,13 @@
 import React from 'react'
-import cl from './ItemTodo.module.scss'
+import cl from './styles.module.scss'
 import editIcon from './../../assets/images/svg/edit-ico.svg'
 import copyIcon from './../../assets/images/svg/copy-ico.svg'
 import deleteIcon from './../../assets/images/svg/delete-ico.svg'
-import AdditionalButton from '../ui/AdditionalButton/AdditionalButton'
-import { NewTodo } from '../../interfaces'
+import AdditionalButton from '../ui/AdditionalButton'
+import { NewTodo } from '../../types/interfaces'
+import { CheckboxChangeFunction, CopyTextFunction, EditFunction, RemoveFunction } from '../../types/types'
 
-interface ItemTodo {
+interface Props {
   onEdit?: EditFunction
   onRemove: RemoveFunction
   onCheckboxChange: CheckboxChangeFunction
@@ -14,21 +15,15 @@ interface ItemTodo {
   title: string 
 }
 
-export type EditFunction = (todoItem: NewTodo) => void
-type RemoveFunction = (e: React.MouseEvent, todoItem: NewTodo) => void
-type CheckboxChangeFunction = (todoItem: NewTodo) => void
-
-export type OnBtnClick = EditFunction | RemoveFunction | CheckboxChangeFunction
-
-const ItemTodo: React.FC<ItemTodo> = ({ onEdit, onRemove, onCheckboxChange, todoItem, title }) => {
-  const copyHandler = () => {
+const ItemTodo: React.FC<Props> = ({ onEdit, onRemove, onCheckboxChange, todoItem, title }) => {
+  const copyHandler: CopyTextFunction = () => {
     navigator.clipboard.writeText(todoItem.title)
   }
 
   const additionalBtns = todoItem.completed ? null : (
     <>
-      <AdditionalButton onClickHandler={onEdit} src={editIcon} alt="edit" />
-      <AdditionalButton onClickHandler={copyHandler} src={copyIcon} alt="copy" />
+      <AdditionalButton item={todoItem} onClickHandler={onEdit!} src={editIcon} alt="edit" />
+      <AdditionalButton item={todoItem} onClickHandler={copyHandler} src={copyIcon} alt="copy" />
     </>
   )
 
@@ -43,7 +38,7 @@ const ItemTodo: React.FC<ItemTodo> = ({ onEdit, onRemove, onCheckboxChange, todo
       />
       <span className={itemTitleCl.join(' ')}>{title}</span>
       {additionalBtns}
-      <AdditionalButton onClickHandler={onRemove} src={deleteIcon} alt="delete" />
+      <AdditionalButton item={todoItem} onClickHandler={onRemove} src={deleteIcon} alt="delete" />
     </li>
   )
 }

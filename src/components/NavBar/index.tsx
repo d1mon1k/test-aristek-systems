@@ -1,5 +1,4 @@
-import React from 'react'
-import cl from './NavBar.module.scss'
+import cl from './styles.module.scss'
 import tasksIco from '../../assets/images/svg/nav-element.svg'
 
 const NavBar = () => {

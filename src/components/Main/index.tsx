@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import cl from './Main.module.scss'
-import TagsRow from '../TagsRow/TagsRow'
-import TodoForm from '../TodoForm/TodoForm'
-import TodosList from '../TodosList/TodosList'
+import cl from './styles.module.scss'
 import apiService from '../../API/apiService'
-import Preloader from '../Preloader/Preloader'
-import { groupByCompleted, improveString } from '../../helpers/helpers'
-import { NewTodo } from '../../interfaces'
+import Preloader from '../Preloader'
+import { groupByCompleted, improveString } from '../../helpers'
+import { NewTodo } from '../../types/interfaces'
+import TodoForm from '../TodoForm'
+import TagsRow from '../TagsRow'
+import TodosList from '../TodosList'
 
-export interface Tasks {
+export interface State {
   todo: Array<NewTodo>
   completed: Array<NewTodo>
 }
 
 const Main: React.FC = () => {
-  const [tasks, setTasks] = useState<Tasks>({ todo: [], completed: [] })
+  const [tasks, setTasks] = useState<State>({ todo: [], completed: [] })
   const [textArea, setTextArea] = useState<string>('')
   const [editableTask, setEditableTask] = useState<NewTodo | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
     setIsLoading(true)
@@ -68,12 +68,12 @@ const Main: React.FC = () => {
     setEditableTask(todoItem)
   }
 
-  const removeHandler = ( todoItem: NewTodo): void => {
+  const removeHandler = (todoItem: NewTodo): void => {
     let todosArr = [...tasks.todo, ...tasks.completed]
     todosArr = todosArr.filter((task) => task.id !== todoItem.id)
     const newTasksList = groupByCompleted(todosArr)
     apiService.deleteTask(todoItem.id)
-    setTasks(newTasksList) 
+    setTasks(newTasksList)
   }
 
   const checkboxChangeHandler = (todoItem: NewTodo): void => {

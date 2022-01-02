@@ -1,4 +1,4 @@
-import { NewTodo } from './../interfaces';
+import { NewTodo } from '../types/interfaces';
 import axios from 'axios'
 
 export default class apiService {

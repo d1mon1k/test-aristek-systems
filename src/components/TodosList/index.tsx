@@ -1,17 +1,17 @@
 import React from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { NewTodo } from '../../interfaces'
-import ItemTodo from '../ItemTodo/ItemTodo'
-import cl from './TodosList.module.scss'
+import { NewTodo } from '../../types/interfaces'
+import ItemTodo from '../ItemTodo'
+import cl from './styles.module.scss'
 
-interface TodosList {
+interface Props {
   partTasks: Array<NewTodo>
   onEdit?: (todoItem: NewTodo) => void
   onRemove: ( todoItem: NewTodo) => void
   onCheckboxChange: (todoItem: NewTodo) => void
 }
 
-const TodosList: React.FC<TodosList> = ({ partTasks, onEdit, onRemove, onCheckboxChange }) => {
+const TodosList: React.FC<Props> = ({ partTasks, onEdit, onRemove, onCheckboxChange }) => {
   return (
     <ul className={cl.todosList}>
       <TransitionGroup component={null}>
@@ -23,8 +23,8 @@ const TodosList: React.FC<TodosList> = ({ partTasks, onEdit, onRemove, onCheckbo
               classNames="item-todo"
             >
               <ItemTodo
-                onEdit={() => onEdit!(todoItem)}
-                onRemove={() => onRemove(todoItem)}
+                onEdit={onEdit}
+                onRemove={onRemove}
                 onCheckboxChange={onCheckboxChange}
                 todoItem={todoItem}
                 title={todoItem.title}

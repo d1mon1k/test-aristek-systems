@@ -1,7 +1,6 @@
-import React from 'react'
-import Header from './components/Header/Header'
-import Main from './components/Main/Main'
-import NavBar from './components/NavBar/NavBar'
+import Header from './components/Header'
+import Main from './components/Main'
+import NavBar from './components/NavBar'
 import './App.scss'
 
 function App() {

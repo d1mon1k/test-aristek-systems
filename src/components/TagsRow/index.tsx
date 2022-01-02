@@ -1,13 +1,13 @@
 import React from 'react'
-import cl from './TagsRow.module.scss'
+import cl from './styles.module.scss'
+import { TodosCounter } from '../../types/interfaces'
 import Counter from './Counter'
-import { TodosCounter } from '../../interfaces'
 
-interface TagsRow {
+interface Props {
   todosCounter: TodosCounter
 }
 
-const TagsRow: React.FC<TagsRow> = ({ todosCounter }) => {
+const TagsRow: React.FC<Props> = ({ todosCounter }) => {
   return (
     <div className={cl.tagsRow}>
       <Counter className={cl.total}>Total: {todosCounter.total}</Counter>

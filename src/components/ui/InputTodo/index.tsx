@@ -1,13 +1,13 @@
 import React from 'react'
-import cl from './InputTodo.module.scss'
+import cl from './styles.module.scss'
 
-interface InputTodo {
+interface Props {
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   textArea: string
   placeholder: string
 }
 
-const InputTodo:React.FC<InputTodo> = ({ onInputChange, textArea, ...props }) => {
+const InputTodo:React.FC<Props> = ({ onInputChange, textArea, ...props }) => {
   return (
     <input
       {...props}

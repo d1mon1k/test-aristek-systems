@@ -1,5 +1,4 @@
-import React from 'react'
-import cl from './Header.module.scss'
+import cl from './styles.module.scss'
 import logo from '../../assets/images/svg/logo.svg'
 import userPhoto from '../../assets/images/jpg/avatar.jpg'
 import arrow from '../../assets/images/svg/arrow.svg'
